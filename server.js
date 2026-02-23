@@ -144,5 +144,5 @@ app.post('/api/chat', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`iClaw Mini v1.0.5 running at http://localhost:${PORT}`);
+    console.log(`iClaw Mini v1.0.6 running at http://localhost:${PORT}`);
 });

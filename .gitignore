@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment Secrets
+.env
+*.log
+
+# OS Metadata
+.DS_Store
+
+# Local Config
+config.json

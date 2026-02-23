@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>iClaw Mini</title>
+    <style>
+        :root {
+            --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+            --primary: #5856D6; /* iOS Purple */
+            --bg: #f2f2f7;
+        }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            background: var(--bg); 
+            display: flex; 
+            flex-direction: column; 
+            height: 100dvh;
+            margin: 0; 
+            overflow: hidden;
+        }
+
+        #nav-bar {
+            display: flex;
+            background: white;
+            border-bottom: 1px solid #ddd;
+            padding-top: env(safe-area-inset-top, 0px);
+        }
+        .nav-item {
+            flex: 1;
+            padding: 12px 5px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .nav-item.active {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .view { display: none; flex: 1; flex-direction: column; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+        .view.active { display: flex; }
+
+        #chat { flex: 1; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+        .msg { padding: 12px 16px; border-radius: 18px; max-width: 85%; line-height: 1.5; font-size: 16px; word-wrap: break-word; white-space: pre-wrap; }
+        .user { align-self: flex-end; background: var(--primary); color: white; border-bottom-right-radius: 4px; }
+        .ai { align-self: flex-start; background: #e9e9eb; color: black; border-bottom-left-radius: 4px; }
+        
+        #input-area { padding: 10px 15px; padding-bottom: calc(10px + var(--safe-area-inset-bottom)); background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-top: 1px solid #ddd; display: flex; gap: 10px; align-items: center; }
+        input { flex: 1; padding: 12px 15px; border: 1px solid #ddd; border-radius: 22px; outline: none; font-size: 16px; background: #fdfdfd; }
+        .send-btn { background: var(--primary); color: white; border: none; width: 44px; height: 44px; border-radius: 50%; font-weight: bold; flex-shrink: 0; }
+
+        .section-card { background: white; margin: 15px; padding: 15px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .section-title { font-weight: bold; margin-bottom: 10px; color: #333; }
+        select { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ddd; font-size: 14px; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <div id="nav-bar">
+        <div class="nav-item active" onclick="showView('chat-view', this)">Chat</div>
+        <div class="nav-item" onclick="showView('config-view', this)">Config</div>
+        <div class="nav-item" onclick="showView('tools-view', this)">Tools</div>
+        <div class="nav-item" onclick="showView('debug-view', this)">Debug</div>
+    </div>
+
+    <!-- CHAT VIEW -->
+    <div id="chat-view" class="view active">
+        <div id="chat">
+            <div class="msg ai">iClaw is ready. Mode: <span id="current-model-label">gpt-4o</span> </div>
+        </div>
+        <div id="input-area">
+            <input type="text" id="prompt" placeholder="Message iClaw..." autocomplete="off">
+            <button class="send-btn" onclick="send()">↑</button>
+        </div>
+    </div>
+
+    <!-- CONFIG VIEW -->
+    <div id="config-view" class="view">
+        <div class="section-card">
+            <div class="section-title">Model Selection</div>
+            <label style="font-size: 12px; color: #666;">Choose AI Provider & Model:</label>
+            <select id="model-selector" onchange="updateModel()">
+                <option value="tao|gpt-4o">OpenAI (via TAO) - gpt-4o</option>
+                <option value="tao|gemini-3-flash-preview">Google (via TAO) - Gemini 3 Flash</option>
+                <option value="xiaomi|mimo-v2-flash">Xiaomi - MiMo V2 Flash</option>
+                <option value="ollama|llama3.2">Ollama (Local) - Llama 3.2</option>
+                <option value="ollama|qwen2.5:3b">Ollama (Local) - Qwen 2.5 3B</option>
+            </select>
+            <p style="font-size: 12px; color: #999; margin-top: 10px;">Ollama requires the Ollama app to be running on your Mac.</p>
+        </div>
+    </div>
+
+    <!-- TOOLS VIEW -->
+    <div id="tools-view" class="view">
+        <div class="section-card">
+            <div class="section-title">Active Tools</div>
+            <p style="font-size: 14px;">✅ execute_shell</p>
+            <p style="font-size: 14px;">✅ read_file</p>
+        </div>
+    </div>
+
+    <!-- DEBUG VIEW -->
+    <div id="debug-view" class="view">
+        <div class="section-card">
+            <div class="section-title">System Status</div>
+            <pre id="debug-log" style="font-size: 12px; background: #eee; color: #333; padding: 10px; border-radius: 5px; height: 200px; overflow-y: auto;">Status: Online
+Network: Cloudflare Tunnel</pre>
+            <button onclick="clearCache()" style="width: 100%; padding: 10px; margin-top: 10px; border-radius: 8px; border: 1px solid #ddd; background: #fff;">Clear Cache & Refresh</button>
+        </div>
+    </div>
+
+    <script>
+        let currentProvider = 'tao';
+        let currentModel = 'gpt-4o';
+
+        function logDebug(msg) {
+            const log = document.getElementById('debug-log');
+            const timestamp = new Date().toLocaleTimeString();
+            log.textContent += `
+[${timestamp}] ${msg}`;
+            log.scrollTop = log.scrollHeight;
+        }
+
+        function showView(viewId, el) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+            document.getElementById(viewId).classList.add('active');
+            el.classList.add('active');
+            logDebug(`Switched to ${viewId}`);
+        }
+
+        function updateModel() {
+            const val = document.getElementById('model-selector').value;
+            [currentProvider, currentModel] = val.split('|');
+            document.getElementById('current-model-label').textContent = currentModel;
+            logDebug(`Model changed to: ${currentModel} (${currentProvider})`);
+        }
+
+        function clearCache() {
+            logDebug("Clearing session cache...");
+            // Simple visual clear for the chat in this session
+            document.getElementById('chat').innerHTML = '<div class="msg ai">Cache cleared. Ready. 🍚</div>';
+            logDebug("System refreshed.");
+        }
+
+        input.addEventListener('keypress', (e) => { if (e.key === 'Enter') send(); });
+
+        async function send() {
+            const input = document.getElementById('prompt');
+            const chat = document.getElementById('chat');
+            const msg = input.value.trim();
+            if (!msg) return;
+
+            chat.innerHTML += `<div class="msg user">${msg}</div>`;
+            input.value = '';
+            chat.scrollTop = chat.scrollHeight;
+            logDebug(`User sent: ${msg.substring(0, 20)}...`);
+
+            try {
+                const res = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        message: msg, 
+                        model: currentModel, 
+                        provider: currentProvider 
+                    })
+                });
+                const data = await res.json();
+                
+                if (data.error) {
+                    logDebug(`AI Error: ${data.error}`);
+                    chat.innerHTML += `<div class="msg ai" style="color:red;">Error: ${data.error}</div>`;
+                } else {
+                    let content = data.response || "No response.";
+                    logDebug(`AI Responded: ${content.substring(0, 20)}...`);
+                    content = content.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+                    chat.innerHTML += `<div class="msg ai">${content}</div>`;
+                }
+                chat.scrollTop = chat.scrollHeight;
+            } catch (e) {
+                logDebug(`Network Error: ${e.message}`);
+                chat.innerHTML += `<div class="msg ai" style="color:red;">Error: ${e.message}</div>`;
+            }
+        }
+    </script>
+</body>
+</html>

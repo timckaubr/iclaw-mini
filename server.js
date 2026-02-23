@@ -9,52 +9,45 @@ require('dotenv').config();
 const app = express();
 const PORT = 3000;
 
+// Dynamic Tool Loader
+const tools = [];
+const toolLogic = {};
+
+function loadTools() {
+    const toolsDir = path.join(__dirname, 'tools');
+    if (!fs.existsSync(toolsDir)) fs.mkdirSync(toolsDir);
+    
+    fs.readdirSync(toolsDir).forEach(file => {
+        if (file.endsWith('.js')) {
+            const tool = require(path.join(toolsDir, file));
+            tools.push({
+                name: tool.name,
+                description: tool.description,
+                parameters: tool.parameters
+            });
+            toolLogic[tool.name] = (args) => tool.execute(args, { exec, fs, path });
+            console.log(`Loaded tool: ${tool.name}`);
+        }
+    });
+}
+
+loadTools();
+
+// Security: Simple Gatekeeper
+app.post('/api/chat', (req, res, next) => {
+    const auth = { login: 'timckaubr', password: 'riceball123' };
+    const b64auth = (req.headers.authorization || '').split(' ')[1] || '';
+    const [login, password] = Buffer.from(b64auth, 'base64').toString().split(':');
+
+    if (login && password && login === auth.login && password === auth.password) {
+        return next();
+    }
+    res.set('WWW-Authenticate', 'Basic realm="iClaw Protected"');
+    res.status(401).send('Authentication required.');
+});
+
 app.use(bodyParser.json());
 app.use(express.static('public'));
-
-// Tool Definitions
-const tools = [
-    {
-        name: "execute_shell",
-        description: "Execute a shell command on the host computer.",
-        parameters: {
-            type: "object",
-            properties: {
-                command: { type: "string", description: "The shell command to run." }
-            },
-            required: ["command"]
-        }
-    },
-    {
-        name: "read_file",
-        description: "Read a file from the disk.",
-        parameters: {
-            type: "object",
-            properties: {
-                path: { type: "string", description: "Path to the file." }
-            },
-            required: ["path"]
-        }
-    }
-];
-
-// Tool Logic
-const toolLogic = {
-    execute_shell: (args) => {
-        return new Promise((resolve) => {
-            exec(args.command, (error, stdout, stderr) => {
-                resolve(stdout || stderr || (error ? error.message : "Success"));
-            });
-        });
-    },
-    read_file: (args) => {
-        try {
-            return fs.readFileSync(args.path, 'utf8');
-        } catch (e) {
-            return `Error reading file: ${e.message}`;
-        }
-    }
-};
 
 // Provider Configs
 const PROVIDERS = {
@@ -65,7 +58,7 @@ const PROVIDERS = {
     },
     xiaomi: {
         baseUrl: "https://api.xiaomimimo.com/anthropic/v1/messages",
-        apiKey: process.env.XIAOMI_API_KEY || process.env.TAO_API_KEY, // Fallback if not set
+        apiKey: process.env.XIAOMI_API_KEY || process.env.TAO_API_KEY,
         format: "anthropic"
     },
     ollama: {
@@ -75,10 +68,12 @@ const PROVIDERS = {
     }
 };
 
-async function runAiLoop(userMessage, modelId, providerKey) {
+async function runAiLoop(userMessage, modelId, providerKey, enabledTools = []) {
     const provider = PROVIDERS[providerKey] || PROVIDERS.tao;
+    const filteredTools = tools.filter(t => enabledTools.includes(t.name));
+
     let messages = [
-        { role: "system", content: "You are Riceball Mini, a helpful AI assistant that can control the host Mac. Use tools to help the user." },
+        { role: "system", content: "You are iClaw Mini, a helpful AI assistant that can control the host Mac. Use tools only if they are available." },
         { role: "user", content: userMessage }
     ];
 
@@ -93,10 +88,9 @@ async function runAiLoop(userMessage, modelId, providerKey) {
             body = JSON.stringify({
                 model: modelId,
                 messages: messages,
-                tools: tools.map(t => ({ type: "function", function: t }))
+                tools: filteredTools.length > 0 ? filteredTools.map(t => ({ type: "function", function: t })) : undefined
             });
         } else if (provider.format === "anthropic") {
-            // Basic Anthropic mapping for Xiaomi
             headers["x-api-key"] = provider.apiKey;
             headers["anthropic-version"] = "2023-06-01";
             body = JSON.stringify({
@@ -104,7 +98,6 @@ async function runAiLoop(userMessage, modelId, providerKey) {
                 max_tokens: 1024,
                 system: messages[0].content,
                 messages: messages.slice(1).map(m => ({ role: m.role, content: m.content })),
-                // Xiaomi/Anthropic tools have a slightly different format, simplified here for now
             });
         }
 
@@ -115,10 +108,8 @@ async function runAiLoop(userMessage, modelId, providerKey) {
         });
 
         const data = await response.json();
-        
         if (data.error) return `AI Error: ${data.error.message || JSON.stringify(data.error)}`;
 
-        // Simplified response handling for multi-model
         if (provider.format === "openai") {
             const choice = data.choices[0].message;
             if (choice.tool_calls) {
@@ -131,15 +122,15 @@ async function runAiLoop(userMessage, modelId, providerKey) {
                 return choice.content;
             }
         } else {
-            return data.content[0].text; // Anthropic format
+            return data.content[0].text;
         }
     }
 }
 
 app.post('/api/chat', async (req, res) => {
     try {
-        const { message, model, provider } = req.body;
-        const result = await runAiLoop(message, model, provider);
+        const { message, model, provider, enabledTools } = req.body;
+        const result = await runAiLoop(message, model, provider, enabledTools);
         res.json({ response: result });
     } catch (e) {
         res.status(500).json({ error: e.message });
@@ -147,5 +138,5 @@ app.post('/api/chat', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Riceball Mini multi-model server running at http://localhost:${PORT}`);
+    console.log(`iClaw Mini v1.0.1 running at http://localhost:${PORT}`);
 });

@@ -49,6 +49,10 @@ app.post('/api/chat', (req, res, next) => {
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+app.get('/api/tools', (req, res) => {
+    res.json(tools);
+});
+
 // Provider Configs
 const PROVIDERS = {
     tao: {
@@ -138,5 +142,5 @@ app.post('/api/chat', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`iClaw Mini v1.0.1 running at http://localhost:${PORT}`);
+    console.log(`iClaw Mini v1.0.2 running at http://localhost:${PORT}`);
 });

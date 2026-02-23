@@ -33,9 +33,11 @@ function loadTools() {
 
 loadTools();
 
-// Security: Simple Gatekeeper
-app.post('/api/chat', (req, res, next) => {
-    const auth = { login: 'timckaubr', password: 'riceball123' };
+// Security: Simple Gatekeeper (Full App Protection)
+const auth = { login: 'timckaubr', password: 'riceball123' };
+
+app.use((req, res, next) => {
+    // Basic Auth Check
     const b64auth = (req.headers.authorization || '').split(' ')[1] || '';
     const [login, password] = Buffer.from(b64auth, 'base64').toString().split(':');
 
@@ -142,5 +144,5 @@ app.post('/api/chat', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`iClaw Mini v1.0.2 running at http://localhost:${PORT}`);
+    console.log(`iClaw Mini v1.0.3 running at http://localhost:${PORT}`);
 });

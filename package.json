@@ -1,0 +1,20 @@
+{
+  "name": "iclaw",
+  "version": "1.9.0",
+  "description": "Lightweight, remote-accessible AI agent framework for macOS control.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "node-fetch": "^2.7.0"
+  }
+}

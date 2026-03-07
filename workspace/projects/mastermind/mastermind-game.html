@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mastermind Game</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #game-board { margin: 20px 0; }
+        input { padding: 8px; margin: 5px; }
+        button { padding: 10px; background-color: #4CAF50; color: white; border: none; }
+        #feedback { font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Mastermind Game</h1>
+    <div id="game-board">The code is 4 colors (R, G, B, Y)</div>
+    <input type="text" id="guess-input" placeholder="Enter your guess (4 colors)" autofocus>
+    <button id="submit-guess">Submit Guess</button>
+    <div id="feedback"></div>
+
+    <script>
+        // Simple Mastermind game
+        document.getElementById('submit-guess').addEventListener('click', function() {
+            const guess = document.getElementById('guess-input').value;
+            if (guess.length === 4) {
+                document.getElementById('feedback').textContent = `Your guess: ${guess}`;
+            } else {
+                document.getElementById('feedback').textContent = 'Please enter 4 colors';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+ * Serving Flask app 'app'
+ * Debug mode: on
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-198-493
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2026 15:50:01] "GET / HTTP/1.1" 200 -
+INFO:__main__:Received file: test_math.tex
+INFO:__main__:Converting uploads/test_math.tex to DOCX...
+INFO:__main__:Conversion successful
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2026 15:50:20] "POST /convert HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/tim/iclaw/workspace/projects/latex_pages/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 315-198-493
+INFO:__main__:Received file: test_math.tex
+INFO:__main__:Converting uploads/test_math.tex to DOCX...
+INFO:__main__:Conversion successful
+INFO:werkzeug:127.0.0.1 - - [28/Feb/2026 16:02:58] "POST /convert HTTP/1.1" 200 -
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/resource_tracker.py:216: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

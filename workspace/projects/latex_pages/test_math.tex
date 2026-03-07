@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\title{IB HL Mathematics - Grade 12 Review}
+\author{Test User}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Calculus: Differentiation and Integration}
+The derivative of a function from first principles is defined as:
+\[ f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h} \]
+
+Fundamental Theorem of Calculus:
+\[ \int_{a}^{b} f(x) \, dx = F(b) - F(a) \]
+
+Integration by parts:
+\[ \int u \frac{dv}{dx} \, dx = uv - \int v \frac{du}{dx} \, dx \]
+
+Maclaurin series for $e^x$:
+\[ e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \dots = \sum_{n=0}^{\infty} \frac{x^n}{n!} \]
+
+\section{Complex Numbers}
+Euler's Form:
+\[ e^{i\theta} = \cos \theta + i \sin \theta \]
+
+De Moivre's Theorem:
+\[ [r(\cos \theta + i \sin \theta)]^n = r^n(\cos n\theta + i \sin n\theta) \]
+
+\section{Vectors}
+The scalar (dot) product of two vectors $\mathbf{a}$ and $\mathbf{b}$:
+\[ \mathbf{a} \cdot \mathbf{b} = |\mathbf{a}| |\mathbf{b}| \cos \theta \]
+
+The vector (cross) product:
+\[ \mathbf{a} \times \mathbf{b} = \begin{vmatrix} 
+\mathbf{i} & \mathbf{j} & \mathbf{k} \\
+a_1 & a_2 & a_3 \\
+b_1 & b_2 & b_3 
+\end{vmatrix} \]
+
+\section{Statistics and Probability}
+The probability density function for a normal distribution:
+\[ f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2} \]
+
+Bayes' Theorem:
+\[ P(A|B) = \frac{P(B|A)P(A)}{P(B)} \]
+
+\section{Trigonometry}
+Double angle identities:
+\[ \sin 2\theta = 2\sin\theta\cos\theta \]
+\[ \cos 2\theta = \cos^2\theta - \sin^2\theta = 2\cos^2\theta - 1 = 1 - 2\sin^2\theta \]
+
+\end{document}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 Redesign - Riceball Edition</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="title-section">
+                <h1>2048</h1>
+                <p class="subtitle">Join the tiles, get to 2048!</p>
+            </div>
+            <div class="score-container">
+                <div class="score-box">
+                    <span class="label">SCORE</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="score-box">
+                    <span class="label">BEST</span>
+                    <span id="best-score">0</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="game-controls">
+            <button id="new-game">New Game</button>
+        </div>
+
+        <div class="game-wrapper">
+            <div id="game-board">
+                <!-- Grid Background -->
+                <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+                <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+                <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+                <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+                
+                <!-- Dynamic Tiles Container -->
+                <div id="tile-container"></div>
+            </div>
+
+            <div id="game-over" class="overlay hidden">
+                <div class="message">
+                    <h2>Game Over!</h2>
+                    <button class="retry-btn">Try Again</button>
+                </div>
+            </div>
+            
+            <div id="game-won" class="overlay hidden">
+                <div class="message">
+                    <h2>You Win!</h2>
+                    <button class="retry-btn">Keep Going</button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="how-to-play">
+            <p><strong>HOW TO PLAY:</strong> Use your <strong>arrow keys</strong> or <strong>swipe</strong> to move the tiles. Tiles with the same number merge into one when they touch!</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

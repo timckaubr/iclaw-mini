@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048</title>
+    <style>
+        body { display: flex; flex-direction: column; align-items: center; margin: 20px; }
+        .game-board { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, 1fr); gap: 5px; }
+        .cell { width: 100px; height: 100px; display: flex; justify-content: center; align-items: center; font-size: 24px; }
+        .cell.high { color: #ff0000; }
+    </style>
+</head>
+<body>
+    <h1>2048 Game</h1>
+    <div id="board" class="game-board"></div>
+    <script>
+        const board = document.getElementById('board');
+        let grid = [];
+
+        function initGame() {
+            grid = Array(4).fill().map(() => Array(4).fill(0));
+            addTile();
+            addTile();
+        }
+
+        function addTile() {
+            const emptyCells = [];
+            for (let i = 0; i < 4; i++) {
+                for (let j = 0; j < 4; j++) {
+                    if (grid[i][j] === 0) emptyCells.push({i, j});
+                }
+            }
+            if (emptyCells.length === 0) return;
+            const cell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+            grid[cell.i][cell.j] = Math.random() < 0.9 ? 2 : 4;
+        }
+
+        function render() {
+            board.innerHTML = '';
+            grid.forEach((row, i) => {
+                row.forEach(cell => {
+                    const cellElement = document.createElement('div');
+                    cellElement.className = 'cell';
+                    if (cell > 0) {
+                        cellElement.textContent = cell;
+                    }
+                    board.appendChild(cellElement);
+                });
+            });
+        }
+
+        initGame();
+        render();
+    </script>
+</body>
+</html>

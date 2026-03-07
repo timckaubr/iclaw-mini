@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="photo/iclaw_mini.png" alt="iClaw mini" width="512">
+  <img src="https://raw.githubusercontent.com/timckaubr/iclaw-mini/main/photo/logo.png" alt="iClaw mini" width="512">
 
   <h1>iClaw mini v2.0: Lightweight Remote AI Agent for Mac</h1>
 

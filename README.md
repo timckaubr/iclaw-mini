@@ -42,6 +42,8 @@
 
 🪶 **Save Your Money**: Good memory management to reduce token usage.
 
+<img src="https://raw.githubusercontent.com/timckaubr/iclaw-mini/main/photo/memory.png" alt="Memory Management" width="400">
+
 ⚡️ **Super Fast**: Optimized performance for quick responses.
 
 🎯 **Simple and Easy to Use**: Intuitive interface and straightforward setup.

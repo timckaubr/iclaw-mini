@@ -31,13 +31,13 @@
   <tr align="center">
     <td align="center" valign="top">
       <p align="center">
-        <img src="photo/Screenshot 2026-03-07 at 10.00.25 PM.png" width="360" height="240" alt="Web UI Demo">
+        <img src="https://raw.githubusercontent.com/timckaubr/iclaw-mini/main/photo/Screenshot%202026-03-07%20at%2010.00.25%E2%80%AFPM.png" width="360" height="240" alt="Web UI Demo">
         <br><em>Web UI Interface</em>
       </p>
     </td>
     <td align="center" valign="top">
       <p align="center">
-        <img src="photo/Screenshot 2026-03-07 at 10.00.44 PM.png" width="400" height="240" alt="Ollama Integration">
+        <img src="https://raw.githubusercontent.com/timckaubr/iclaw-mini/main/photo/Screenshot%202026-03-07%20at%2010.00.44%E2%80%AFPM.png" width="400" height="240" alt="Ollama Integration">
         <br><em>Local AI Integration</em>
       </p>
     </td>
@@ -71,13 +71,13 @@
   <tr align="center">
     <td align="center" valign="top">
       <p align="center">
-        <img src="photo/Screenshot 2026-03-07 at 10.00.52 PM.png" width="360" height="240" alt="Memory Control">
+        <img src="https://raw.githubusercontent.com/timckaubr/iclaw-mini/main/photo/Screenshot%202026-03-07%20at%2010.00.52%E2%80%AFPM.png" width="360" height="240" alt="Memory Control">
         <br><em>Memory Control Feature</em>
       </p>
     </td>
     <td align="center" valign="top">
       <p align="center">
-        <img src="photo/Screenshot 2026-03-07 at 10.01.00 PM.png" width="400" height="240" alt="Config Settings">
+        <img src="https://raw.githubusercontent.com/timckaubr/iclaw-mini/main/photo/Screenshot%202026-03-07%20at%2010.01.00%E2%80%AFPM.png" width="400" height="240" alt="Config Settings">
         <br><em>Easy Configuration</em>
       </p>
     </td>

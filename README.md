@@ -42,7 +42,7 @@
 
 🪶 **Save Your Money**: Good memory management to reduce token usage.
 
-<img src="https://raw.githubusercontent.com/timckaubr/iclaw-mini/main/photo/memory.png" alt="Memory Management" width="400">
+<img src="https://raw.githubusercontent.com/timckaubr/iclaw-mini/main/photo/memory.png" alt="Memory Management" width="600">
 
 ⚡️ **Super Fast**: Optimized performance for quick responses.
 
@@ -62,7 +62,7 @@
     </td>
     <td align="center" valign="top">
       <p align="center">
-        <img src="https://raw.githubusercontent.com/timckaubr/iclaw-mini/main/photo/Screenshot%202026-03-07%20at%2010.01.00%E2%80%AFPM.png" width="400" height="240" alt="Config Settings">
+        <img src="https://raw.githubusercontent.com/timckaubr/iclaw-mini/main/photo/Screenshot%202026-03-07%20at%2010.01.00%E2%80%AFPM.png" width="600" height="240" alt="Config Settings">
         <br><em>Easy Configuration</em>
       </p>
     </td>

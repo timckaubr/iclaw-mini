@@ -10,8 +10,8 @@
     <img src="https://img.shields.io/badge/Platform-macOS-blue?style=flat&logo=apple&logoColor=white" alt="macOS">
     <img src="https://img.shields.io/badge/license-MIT-green" alt="License">
     <br>
-    <a href="https://github.com/yourusername/iclaw-mini"><img src="https://img.shields.io/badge/GitHub-iclaw--mini-black?style=flat&logo=github&logoColor=white" alt="GitHub"></a>
-    <a href="https://github.com/yourusername/iclaw-mini/releases"><img src="https://img.shields.io/badge/Releases-v2.0-blue?style=flat&logo=github&logoColor=white" alt="Releases"></a>
+    <a href="https://github.com/timckaubr/iclaw-mini"><img src="https://img.shields.io/badge/GitHub-iclaw--mini-black?style=flat&logo=github&logoColor=white" alt="GitHub"></a>
+    <a href="https://github.com/timckaubr/iclaw-mini/releases"><img src="https://img.shields.io/badge/Releases-v2.0-blue?style=flat&logo=github&logoColor=white" alt="Releases"></a>
     <br>
     <a href="https://discord.gg/yourserver"><img src="https://img.shields.io/badge/Discord-Community-4c60eb?style=flat&logo=discord&logoColor=white" alt="Discord"></a>
     <a href="https://x.com/yourhandle"><img src="https://img.shields.io/badge/X_(Twitter)-Follow-black?style=flat&logo=x&logoColor=white" alt="Twitter"></a>
@@ -110,7 +110,7 @@ iclaw_mini/
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/iclaw-mini.git
+   git clone https://github.com/timckaubr/iclaw-mini.git
    cd iclaw-mini
    ```
 
@@ -255,7 +255,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <div align="center">
   <p>Made with ❤️ by Master Au & iClaw</p>
   <p>
-    <a href="https://github.com/yourusername/iclaw-mini">GitHub</a> ·
+    <a href="https://github.com/timckaubr/iclaw-mini">GitHub</a> ·
     <a href="https://discord.gg/yourserver">Discord</a> ·
     <a href="https://x.com/yourhandle">Twitter</a>
   </p>

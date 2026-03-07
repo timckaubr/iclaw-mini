@@ -171,31 +171,6 @@ iclaw_mini/
    - Use the chat interface to control your Mac
    - Execute shell commands, manage files, and more
 
-### Example Commands
-
-```bash
-# Execute shell commands
-execute_shell: "ls -la ~/Documents"
-
-# Read a file
-read_file: "/Users/username/Documents/file.txt"
-
-# Write to a file
-write_file: {
-  "path": "/Users/username/Documents/test.txt",
-  "content": "Hello from iClaw!"
-}
-
-# Control volume
-control_volume: "50"  # Set volume to 50%
-
-# Send notification
-macos_notification: {
-  "title": "iClaw",
-  "message": "Task completed!"
-}
-```
-
 ## 🔧 Configuration
 
 ### API Providers

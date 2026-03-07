@@ -27,23 +27,6 @@
 
 ⚡️ **Access Anywhere**: One-click Cloudflare Tunneling lets you securely reach your Mac from any network. **Local Power**: Seamless Ollama integration for private, high-speed local AI.
 
-<table align="center">
-  <tr align="center">
-    <td align="center" valign="top">
-      <p align="center">
-        <img src="https://raw.githubusercontent.com/timckaubr/iclaw-mini/main/photo/Screenshot%202026-03-07%20at%2010.00.25%E2%80%AFPM.png" width="360" height="240" alt="Web UI Demo">
-        <br><em>Web UI Interface</em>
-      </p>
-    </td>
-    <td align="center" valign="top">
-      <p align="center">
-        <img src="https://raw.githubusercontent.com/timckaubr/iclaw-mini/main/photo/Screenshot%202026-03-07%20at%2010.00.44%E2%80%AFPM.png" width="400" height="240" alt="Ollama Integration">
-        <br><em>Local AI Integration</em>
-      </p>
-    </td>
-  </tr>
-</table>
-
 > [!NOTE]
 > **🎯 Project Focus**: iClaw mini v2.0 is optimized for **macOS** with a focus on remote accessibility, local AI integration, and simple configuration via a web-based UI.
 

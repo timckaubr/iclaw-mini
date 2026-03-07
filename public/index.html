@@ -114,16 +114,6 @@
         </div>
 
         <div class="section-card">
-            <div class="section-title">Intelligence Control</div>
-            <label style="font-size: 12px; color: #666;">Max Tool Call Iterations (0 - 99):</label>
-            <div style="display: flex; align-items: center; gap: 15px; margin-top: 10px;">
-                <input type="range" id="max-tool-calls" min="0" max="99" value="5" style="flex: 1; accent-color: var(--primary);" oninput="updateToolCallsLabel()" onchange="saveSettings()">
-                <span id="tool-calls-val" style="font-weight: bold; color: var(--primary); width: 25px;">5</span>
-            </div>
-            <p style="font-size: 11px; color: #999; margin-top: 10px;">Controls how many steps the AI can take for a single request. 0 disables tool use.</p>
-        </div>
-
-        <div class="section-card">
             <div class="section-title">Advanced Intelligence</div>
             <div class="tool-row" style="border-bottom: none;">
                 <div class="tool-info">
@@ -215,6 +205,16 @@
 
     <!-- TOOLS VIEW -->
     <div id="tools-view" class="view">
+        <div class="section-card">
+            <div class="section-title">Intelligence Control</div>
+            <label style="font-size: 12px; color: #666;">Max Tool Call Iterations (0 - 99):</label>
+            <div style="display: flex; align-items: center; gap: 15px; margin-top: 10px;">
+                <input type="range" id="max-tool-calls" min="0" max="99" value="5" style="flex: 1; accent-color: var(--primary);" oninput="updateToolCallsLabel()" onchange="saveSettings()">
+                <span id="tool-calls-val" style="font-weight: bold; color: var(--primary); width: 25px;">5</span>
+            </div>
+            <p style="font-size: 11px; color: #999; margin-top: 10px;">Controls how many steps the AI can take for a single request. 0 disables tool use.</p>
+        </div>
+
         <div class="section-card">
             <div class="section-title">Dynamic Tool Management</div>
             <p style="font-size: 12px; color: #666; margin-bottom: 15px;">Optimize AI performance by toggling tools on/off. Checked tools are visible to the AI.</p>

@@ -11,6 +11,11 @@ require('dotenv').config();
 let config = { 
     auth: { login: 'admin', password: 'password' }, 
     models: [],
+    providers: {
+        tao: { baseUrl: '', apiKey: '' },
+        xiaomi: { baseUrl: '', apiKey: '' },
+        ollama: { baseUrl: '', apiKey: '' }
+    },
     settings: {
         currentProvider: 'tao',
         currentModel: 'gpt-4o',
@@ -28,22 +33,27 @@ let config = {
     }
 };
 
+const configPath = path.join(__dirname, 'config.json');
+
 function saveConfig() {
     try {
-        const configPath = path.join(__dirname, 'config.json');
         fs.writeFileSync(configPath, JSON.stringify(config, null, 2), 'utf8');
     } catch (e) {
         console.error("Error saving config.json", e);
     }
 }
 
+// Initial Load / Creation
 try {
-    const configPath = path.join(__dirname, 'config.json');
     if (fs.existsSync(configPath)) {
-        config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+        const loaded = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+        config = { ...config, ...loaded }; // Merge to ensure new keys exist
+    } else {
+        saveConfig();
     }
 } catch (e) {
     console.error("Error loading config.json, using defaults.");
+    saveConfig();
 }
 
 const app = express();
@@ -143,6 +153,16 @@ app.get('/api/tools', (req, res) => {
 
 app.get('/api/config-models', (req, res) => {
     res.json(config.models || []);
+});
+
+app.get('/api/providers', (req, res) => {
+    res.json(config.providers);
+});
+
+app.post('/api/providers', (req, res) => {
+    config.providers = { ...config.providers, ...req.body };
+    saveConfig();
+    res.json({ success: true });
 });
 
 app.get('/api/settings', (req, res) => {

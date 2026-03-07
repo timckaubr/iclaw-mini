@@ -53,22 +53,6 @@
 🔧 **Easily Config**: Simple configuration via Web UI or config files.
 
 <img src="https://raw.githubusercontent.com/timckaubr/iclaw-mini/main/photo/config.png" alt="Easy Configuration" width="600">
-<table align="center">
-  <tr align="center">
-    <td align="center" valign="top">
-      <p align="center">
-        <img src="https://raw.githubusercontent.com/timckaubr/iclaw-mini/main/photo/Screenshot%202026-03-07%20at%2010.00.52%E2%80%AFPM.png" width="360" height="240" alt="Memory Control">
-        <br><em>Memory Control Feature</em>
-      </p>
-    </td>
-    <td align="center" valign="top">
-      <p align="center">
-        <img src="https://raw.githubusercontent.com/timckaubr/iclaw-mini/main/photo/Screenshot%202026-03-07%20at%2010.01.00%E2%80%AFPM.png" width="600" height="240" alt="Config Settings">
-        <br><em>Easy Configuration</em>
-      </p>
-    </td>
-  </tr>
-</table>
 
 |                               | Traditional Remote | **iClaw mini v2.0**                    |
 | ----------------------------- | ------------------ | -------------------------------------- |

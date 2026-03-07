@@ -57,13 +57,15 @@
 
 ## ✨ Key Selling Points 🚀
 
-🪶 **Access Anywhere**: One-click Cloudflare Tunneling lets you securely reach your Mac from any network.
+🪶 **Save Your Money**: Good memory management to reduce token usage.
 
-💰 **Local Power**: Seamless Ollama integration for private, high-speed local AI (Qwen 2.5, Llama 3, etc.).
+⚡️ **Super Fast**: Optimized performance for quick responses.
 
-⚡️ **Pro-Grade Control**: Run shell commands, manage files, and debug system issues remotely.
+🎯 **Simple and Easy to Use**: Intuitive interface and straightforward setup.
 
-🤖 **Smart Heartbeat**: Automated task execution during idle time via `heartbeat.md`.
+💪 **As Powerful as OpenClaw**: Full-featured remote control capabilities.
+
+🔧 **Easily Config**: Simple configuration via Web UI or config files.
 
 |                               | Traditional Remote | **iClaw mini v2.0**                    |
 | ----------------------------- | ------------------ | -------------------------------------- |

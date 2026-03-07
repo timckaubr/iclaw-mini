@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/logo.png" alt="iClaw mini" width="512">
+  <img src="photo/iclaw_mini.png" alt="iClaw mini" width="512">
 
   <h1>iClaw mini v2.0: Lightweight Remote AI Agent for Mac</h1>
 
@@ -31,13 +31,13 @@
   <tr align="center">
     <td align="center" valign="top">
       <p align="center">
-        <img src="assets/demo-ui.png" width="360" height="240" alt="Web UI Demo">
+        <img src="photo/Screenshot 2026-03-07 at 10.00.25 PM.png" width="360" height="240" alt="Web UI Demo">
         <br><em>Web UI Interface</em>
       </p>
     </td>
     <td align="center" valign="top">
       <p align="center">
-        <img src="assets/ollama-integration.png" width="400" height="240" alt="Ollama Integration">
+        <img src="photo/Screenshot 2026-03-07 at 10.00.44 PM.png" width="400" height="240" alt="Ollama Integration">
         <br><em>Local AI Integration</em>
       </p>
     </td>
@@ -66,6 +66,23 @@
 💪 **As Powerful as OpenClaw**: Full-featured remote control capabilities.
 
 🔧 **Easily Config**: Simple configuration via Web UI or config files.
+
+<table align="center">
+  <tr align="center">
+    <td align="center" valign="top">
+      <p align="center">
+        <img src="photo/Screenshot 2026-03-07 at 10.00.52 PM.png" width="360" height="240" alt="Memory Control">
+        <br><em>Memory Control Feature</em>
+      </p>
+    </td>
+    <td align="center" valign="top">
+      <p align="center">
+        <img src="photo/Screenshot 2026-03-07 at 10.01.00 PM.png" width="400" height="240" alt="Config Settings">
+        <br><em>Easy Configuration</em>
+      </p>
+    </td>
+  </tr>
+</table>
 
 |                               | Traditional Remote | **iClaw mini v2.0**                    |
 | ----------------------------- | ------------------ | -------------------------------------- |

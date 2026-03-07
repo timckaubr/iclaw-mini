@@ -52,6 +52,7 @@
 
 🔧 **Easily Config**: Simple configuration via Web UI or config files.
 
+<img src="https://raw.githubusercontent.com/timckaubr/iclaw-mini/main/photo/config.png" alt="Easy Configuration" width="600">
 <table align="center">
   <tr align="center">
     <td align="center" valign="top">

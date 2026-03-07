@@ -217,7 +217,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 <div align="center">
-  <p>Made with ❤️ by Master Au & iClaw</p>
+  <p>Made with ❤️ by Riceball & iClaw</p>
   <p>
     <a href="https://github.com/timckaubr/iclaw-mini">GitHub</a> ·
     <a href="https://discord.gg/yourserver">Discord</a> ·

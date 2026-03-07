@@ -26,21 +26,19 @@
     }
   ],
   "providers": {
+    "brave": {
+      "apiKey": "YOUR_BRAVE_API_KEY"
+    },
     "tao": {
-      "apiKey": "sk-naTNzWwAZVfYsBJKky9pbRXFBbuEJyp9U9AWIavW6H7UvkGr",
+      "apiKey": "YOUR_TAO_API_KEY",
       "baseUrl": "https://tao.plus7.plus/v1/chat/completions"
     },
     "xiaomi": {
-      "apiKey": "sk-snyy8s9ey6od8psss03ia7ke00kb9ok6m82w0t4pbyx3qj8c",
+      "apiKey": "YOUR_XIAOMI_API_KEY",
       "baseUrl": "https://api.xiaomimimo.com/anthropic/v1/messages"
-    },
-    "brave": {
-      "apiKey": "BSADZqGvzfwND_uISFDhC-poE3L4UIg"
     }
   },
   "settings": {
-    "currentProvider": "tao",
-    "currentModel": "gemini-3-flash-preview",
     "activeTools": [
       "execute_shell",
       "read_file",
@@ -49,14 +47,16 @@
       "generate_image"
     ],
     "contextLimit": 10,
-    "thinking": false,
-    "streaming": false,
-    "readLevel": "home",
-    "writeLevel": "workspace",
+    "currentModel": "gemini-3-flash-preview",
+    "currentProvider": "tao",
     "heartbeatEnabled": false,
-    "tunnelUrl": "https://dist-interstate-imperial-seeker.trycloudflare.com",
-    "maxToolCalls": 20,
+    "heartbeatModel": "gemini-3-flash-preview",
     "heartbeatProvider": "tao",
-    "heartbeatModel": "gemini-3-flash-preview"
+    "maxToolCalls": 20,
+    "readLevel": "home",
+    "streaming": false,
+    "thinking": false,
+    "tunnelUrl": "",
+    "writeLevel": "workspace"
   }
 }
